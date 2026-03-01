@@ -4,121 +4,94 @@ Simple uptime monitor — pings endpoints, shows green/red status dashboard
 
 ## Features
 
-- 🚀 Next.js 15 with App Router and TypeScript
-- 🎨 Dark theme with responsive design
-- 📊 Real-time endpoint monitoring
-- ⚡ Auto-refresh every 30 seconds
-- 🔧 Configurable endpoints
-- 📱 Mobile-first responsive design
+- **Real-time monitoring**: Pings configured HTTP endpoints every 30 seconds
+- **Dark theme UI**: Clean, responsive dashboard with status indicators
+- **Configurable endpoints**: Easy to add/remove services to monitor
+- **Response time tracking**: Shows latency for each service
+- **Auto-refresh**: Dashboard updates automatically without page reload
+- **Mobile responsive**: Works on desktop, tablet, and mobile devices
 
-## Setup
+## Quick Start
 
-1. **Install dependencies:**
+1. **Install dependencies**:
    ```bash
    npm install
    ```
 
-2. **Configure environment (optional):**
+2. **Configure environment** (optional):
    ```bash
    cp .env.example .env
    # Edit .env to change PORT if needed (defaults to 4003)
    ```
 
-3. **Configure endpoints:**
-   Edit `src/lib/config.ts` to add/modify monitored endpoints:
-   ```typescript
-   export const endpoints: Endpoint[] = [
-     { name: "Google", url: "https://www.google.com", expectedStatus: 200 },
-     { name: "GitHub", url: "https://github.com", expectedStatus: 200 },
-     // Add more endpoints...
-   ];
+3. **Start development server**:
+   ```bash
+   npm run dev
    ```
 
-## Development
+4. **Open in browser**:
+   ```
+   http://localhost:4003
+   ```
 
-```bash
-# Start development server
-npm run dev
+## Configuration
 
-# Type checking
-npm run type-check
+Edit `src/lib/config.ts` to add or modify monitored endpoints:
 
-# Linting
-npm run lint
-```
-
-The app will be available at http://localhost:4003
-
-## Production
-
-```bash
-# Build the application
-npm run build
-
-# Start production server
-npm start
+```typescript
+export const endpoints: Endpoint[] = [
+  { name: "Google", url: "https://www.google.com", expectedStatus: 200 },
+  { name: "GitHub", url: "https://github.com", expectedStatus: 200 },
+  { name: "Your API", url: "https://api.yoursite.com/health", expectedStatus: 200 },
+];
 ```
 
 ## API Endpoints
 
 ### GET /api/status
 
-Returns the current status of all configured endpoints.
+Returns current status of all configured endpoints:
 
-**Response:**
 ```json
 [
   {
     "name": "Google",
     "url": "https://www.google.com",
     "status": "up",
-    "responseTime": 150,
-    "checkedAt": "2024-01-01T12:00:00.000Z"
+    "responseTime": 145,
+    "checkedAt": "2024-01-15T10:30:00.000Z"
   }
 ]
 ```
 
-## Configuration
+## Production Deployment
 
-### Environment Variables
+1. **Build the application**:
+   ```bash
+   npm run build
+   ```
 
-- `PORT`: Server port (default: 4003)
-- `NEXT_PUBLIC_APP_URL`: Public URL for the application
+2. **Start production server**:
+   ```bash
+   npm start
+   ```
 
-### Endpoint Configuration
+3. **Environment variables**:
+   - `PORT`: Server port (default: 4003)
 
-Endpoints are configured in `src/lib/config.ts`:
+## Development
 
-```typescript
-interface Endpoint {
-  name: string;        // Display name
-  url: string;         // URL to monitor
-  expectedStatus: number; // Expected HTTP status code (usually 200)
-}
-```
+- **Type checking**: `npm run type-check`
+- **Linting**: `npm run lint`
+- **Development server**: `npm run dev`
 
-## Architecture
+## Tech Stack
 
-- **Frontend**: Next.js 15 App Router with TypeScript
-- **Styling**: Tailwind CSS with dark theme
-- **API**: Next.js API routes
-- **Monitoring**: HTTP fetch with 5-second timeout
-- **Refresh**: Client-side polling every 30 seconds
-
-## Design
-
-- **Colors**: Dark theme with green/red status indicators
-- **Layout**: Responsive grid (1/2/3 columns)
-- **Typography**: Inter font family
-- **Components**: Status cards with loading skeletons
-
-## Browser Support
-
-Modern browsers with ES2015+ support. Tested on:
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS
+- **Font**: Inter (Google Fonts)
+- **Deployment**: Self-hosted
 
 ## License
 

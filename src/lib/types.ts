@@ -7,7 +7,7 @@ export interface Endpoint {
 export interface StatusResult {
   name: string;
   url: string;
-  status: "up" | "down";
+  status: 'up' | 'down';
   responseTime: number;
   checkedAt: string;
 }
