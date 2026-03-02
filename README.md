@@ -1,5 +1,10 @@
 # Status Page
 
+> Built with [Dark Factory v4](https://github.com/ibuzzardo/dark-factory-v4) — autonomous AI software development pipeline
+
+**[Live Demo](https://status-page-seven-steel.vercel.app)**
+
+
 Simple uptime monitor — pings endpoints, shows green/red status dashboard
 
 ## Features
