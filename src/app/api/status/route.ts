@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { endpoints } from '@/lib/config';
 import { StatusResult } from '@/lib/types';
 
-export async function GET(): Promise<NextResponse<StatusResult[]>> {
+export async function GET(): Promise<NextResponse> {
   try {
     const results: StatusResult[] = await Promise.all(
       endpoints.map(async (endpoint) => {
